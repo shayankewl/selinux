@@ -71,9 +71,9 @@ common_cflags := \
 
 common_includes := \
 	$(LOCAL_PATH)/include/ \
-	$(LOCAL_PATH)/src/ \
-	$(LOCAL_PATH)/cil/include/ \
-	$(LOCAL_PATH)/cil/src/ \
+	$(LOCAL_PATH)/src/
+	# $(LOCAL_PATH)/cil/include/ \
+	# $(LOCAL_PATH)/cil/src/ \
 
 ##
 # "-x c" forces the lex/yacc files to be compiled as c the build system
@@ -84,18 +84,18 @@ yacc_flags := -x c -std=gnu89
 ##
 # libsepol.so
 #
-include $(CLEAR_VARS)
+# include $(CLEAR_VARS)
 
-LOCAL_MODULE := libsepol
-LOCAL_MODULE_TAGS := optional
-LOCAL_COPY_HEADERS_TO := sepol
-LOCAL_COPY_HEADERS := include/sepol/handle.h include/sepol/policydb.h cil/include/cil/cil.h
-LOCAL_C_INCLUDES := $(common_includes) 
-LOCAL_CFLAGS := $(yacc_flags) $(common_cflags)
-LOCAL_SRC_FILES := $(common_src_files) $(cil_src_files)
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+# LOCAL_MODULE := libsepol
+# LOCAL_MODULE_TAGS := optional
+# LOCAL_COPY_HEADERS_TO := sepol
+# LOCAL_COPY_HEADERS := include/sepol/handle.h include/sepol/policydb.h cil/include/cil/cil.h
+# LOCAL_C_INCLUDES := $(common_includes) 
+# LOCAL_CFLAGS := $(yacc_flags) $(common_cflags)
+# LOCAL_SRC_FILES := $(common_src_files) $(cil_src_files)
+# LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 
-include $(BUILD_HOST_SHARED_LIBRARY)
+# include $(BUILD_HOST_SHARED_LIBRARY)
 
 ##
 # libsepol.a
@@ -105,34 +105,34 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := libsepol
 LOCAL_MODULE_TAGS := optional
 LOCAL_C_INCLUDES := $(common_includes) 
-LOCAL_CFLAGS := $(yacc_flags) $(common_cflags)
-LOCAL_SRC_FILES := $(common_src_files) $(cil_src_files)
-LOCAL_MODULE_CLASS := STATIC_LIBRARIES
-
-include $(BUILD_HOST_STATIC_LIBRARY)
-
-##
-# chkcon
-#
-include $(CLEAR_VARS)
-
-LOCAL_MODULE := chkcon
-LOCAL_MODULE_TAGS := optional
-LOCAL_C_INCLUDES := $(common_includes) 
-LOCAL_CFLAGS := $(common_cflags)
-LOCAL_SRC_FILES := utils/chkcon.c
-LOCAL_SHARED_LIBRARIES := libsepol
-LOCAL_MODULE_CLASS := EXECUTABLES
-
-include $(BUILD_HOST_EXECUTABLE)
-
-include $(CLEAR_VARS)
-
-LOCAL_MODULE := libsepol
-LOCAL_MODULE_TAGES := optional
-LOCAL_C_INCLUDES := $(common_includes)
 LOCAL_CFLAGS := $(common_cflags)
 LOCAL_SRC_FILES := $(common_src_files)
 LOCAL_MODULE_CLASS := STATIC_LIBRARIES
 
 include $(BUILD_STATIC_LIBRARY)
+
+##
+# chkcon
+#
+# include $(CLEAR_VARS)
+
+# LOCAL_MODULE := chkcon
+# LOCAL_MODULE_TAGS := optional
+# LOCAL_C_INCLUDES := $(common_includes) 
+# LOCAL_CFLAGS := $(common_cflags)
+# LOCAL_SRC_FILES := utils/chkcon.c
+# LOCAL_SHARED_LIBRARIES := libsepol
+# LOCAL_MODULE_CLASS := EXECUTABLES
+
+# include $(BUILD_HOST_EXECUTABLE)
+
+# include $(CLEAR_VARS)
+
+# LOCAL_MODULE := libsepol
+# LOCAL_MODULE_TAGES := optional
+# LOCAL_C_INCLUDES := $(common_includes)
+# LOCAL_CFLAGS := $(common_cflags)
+# LOCAL_SRC_FILES := $(common_src_files)
+# LOCAL_MODULE_CLASS := STATIC_LIBRARIES
+
+# include $(BUILD_STATIC_LIBRARY)
