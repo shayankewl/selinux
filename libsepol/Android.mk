@@ -4,6 +4,7 @@ common_src_files := \
 	src/assertion.c \
 	src/avrule_block.c \
 	src/avtab.c \
+	src/android_m_compat.c \
 	src/boolean_record.c \
 	src/booleans.c \
 	src/conditional.c \
