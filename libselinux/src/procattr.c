@@ -22,10 +22,12 @@ static pthread_key_t destructor_key;
 static int destructor_key_initialized = 0;
 static __thread char destructor_initialized;
 
-static pid_t gettid(void)
-{
-	return syscall(__NR_gettid);
-}
+int selinux_page_size = 0;
+
+// static pid_t gettid(void)
+// {
+// 	return syscall(__NR_gettid);
+// }
 
 static void procattr_thread_destructor(void __attribute__((unused)) *unused)
 {
